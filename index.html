@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calcule a hora de ir embora!</h1>
+      <div class="well">
+        <label for="arrived_at">Horário de entrada:</label>
+        <input type="text" id="arrived_at" class="small" />
+        <input type="submit" id="calc_button" class="btn primary" value="Calcular" />
+      </div>
+
+      <div class="alert-message">Mínimo: <strong id="min_time"></strong></div>
+      <div class="alert-message success">Normal: <strong id="regular_time"></strong></div>
+      <div class="alert-message error">Máximo: <strong id="max_time"></strong></div>
+    </div>
+
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap-1.2.0.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/base.css">
+    <script type="text/javascript" src="assets/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="assets/javascripts/calculator.js"></script>
+    <script type="text/javascript" src="assets/javascripts/calculator_controller.js"></script>
+    <script type="text/javascript">
+      calculator = new Calculator();
+      new CalculatorController(calculator);
+    </script>
+  </body>
+</html>
