@@ -9,8 +9,9 @@ var Calculator = function() {
   }
 
   var convertTime = function(arrivedAt, period) {
-    var hours = arrivedAt.charAt(0) + arrivedAt.charAt(1);
-    var minutes = arrivedAt.charAt(3) + arrivedAt.charAt(4);
+    var collection = arrivedAt.split(/[^A-Z0-9]/);
+    var hours = collection[0];
+    var minutes = collection[1];
 
     var dateTime = new Date(2011, 01, 01, hours, minutes);
     var result = new Date(dateTime.getTime() + period); 
