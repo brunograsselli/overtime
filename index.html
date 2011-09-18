@@ -11,12 +11,14 @@
   </head>
   <body>
     <div class="container-fluid">
-      <h1>Calcule a hora de ir embora!</h1>
-      <div class="well">
-        <label for="arrived_at">Entrada:</label>
-        <input type="time" id="arrived_at" class="mini" />
-        <input type="submit" id="calc_button" class="btn primary" value="Calcular" />
-      </div>
+      <form>
+        <h1>Calcule a hora de ir embora!</h1>
+        <div class="well">
+          <label for="arrived_at">Entrada:</label>
+          <input type="time" id="arrived_at" class="mini" />
+          <input type="submit" id="calc_button" class="btn primary" value="Calcular" />
+        </div>
+      </form>
 
       <div class="alert-message">Mínimo: <strong id="min_time"></strong></div>
       <div class="alert-message success">Normal: <strong id="regular_time"></strong></div>

@@ -20,13 +20,13 @@ describe("CalculatorController", function () {
       }
     }
 
-    $("body").append("<div id='test'/>");
+    $("body").append("<div id='test'><form></form></div>");
 
-    $("#test").append("<a id='calc_button' />");
-    $("#test").append("<input id='arrived_at' />");
-    $("#test").append("<div id='min_time' />");
-    $("#test").append("<div id='regular_time' />");
-    $("#test").append("<div id='max_time' />");
+    $("form").append("<input type='submit' id='calc_button' />");
+    $("form").append("<input id='arrived_at' />");
+    $("form").append("<div id='min_time' />");
+    $("form").append("<div id='regular_time' />");
+    $("form").append("<div id='max_time' />");
 
     var calculatorController = new CalculatorController(fakeCalculator);
     $("#arrived_at").val("10:30");
@@ -56,7 +56,7 @@ describe("CalculatorController", function () {
     });
   });
 
-  describe("when user clicks into calc button", function () {
+  describe("when user submits the form", function () {
     it("should calculate the minimum time", function () {
       $("#calc_button").click();
       expect($("#min_time").html()).toEqual("20:30");
