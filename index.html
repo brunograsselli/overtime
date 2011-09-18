@@ -26,9 +26,9 @@
     <script type="text/javascript" src="assets/javascripts/calculator_controller.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
+        $("#arrived_at").val(window.localStorage.time);
         var calculator = new Calculator();
         new CalculatorController(calculator);
-        $("#arrived_at").val(window.localStorage.time);
       });
     </script>
   </body>

@@ -12,5 +12,9 @@ var CalculatorController = function(calculator) {
     $("#max_time").html(calculator.maxTime(arrivedAt));
   };
 
+  if ($("#arrived_at").val() != "") {
+    calcTimeToLeave();
+  }
+
   bindCalcButton();
 }
