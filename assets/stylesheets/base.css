@@ -2,3 +2,11 @@ body {
   padding-top: 30px;
 }
 
+.well {
+  padding: 19px 0;
+}
+
+.well label {
+  width: auto;
+  padding-left: 14px;
+}
