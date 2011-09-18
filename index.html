@@ -13,7 +13,7 @@
       <h1>Calcule a hora de ir embora!</h1>
       <div class="well">
         <label for="arrived_at">Horário de entrada:</label>
-        <input type="number" autofocus="autofocus" id="arrived_at" class="small" />
+        <input type="time" autofocus="autofocus" id="arrived_at" class="small" />
         <input type="submit" id="calc_button" class="btn primary" value="Calcular" />
       </div>
 
@@ -25,8 +25,11 @@
     <script type="text/javascript" src="assets/javascripts/calculator.js"></script>
     <script type="text/javascript" src="assets/javascripts/calculator_controller.js"></script>
     <script type="text/javascript">
-      var calculator = new Calculator();
-      new CalculatorController(calculator);
+      $(document).ready(function () {
+        var calculator = new Calculator();
+        new CalculatorController(calculator);
+        $("#arrived_at").val(window.localStorage.time);
+      });
     </script>
   </body>
 </html>

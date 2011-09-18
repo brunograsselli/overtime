@@ -48,5 +48,11 @@ describe("CalculatorController", function () {
       $("#calc_button").click();
       expect($("#max_time").html()).toEqual("22:30");
     });
+
+    it("should store the time", function () {
+      delete window.localStorage.overtime;
+      $("#calc_button").click();
+      expect(window.localStorage.time).toEqual("10:30");
+    });
   });
 });
