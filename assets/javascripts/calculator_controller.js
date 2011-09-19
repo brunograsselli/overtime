@@ -1,6 +1,6 @@
 var CalculatorController = function(calculator) {
   var bindCalcButton = function() {
-    $("form").submit(function() {
+    $("form").submit(function(event) {
       event.preventDefault();
       calcTimeToLeave();
     });
