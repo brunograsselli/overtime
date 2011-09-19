@@ -9,7 +9,7 @@ var Calculator = function() {
   }
 
   var convertTime = function(arrivedAt, period) {
-    var collection = arrivedAt.split(/[^A-Z0-9]/);
+    var collection = arrivedAt.split(/[^0-9]/);
     var hours = collection[0];
     var minutes = collection[1];
 
