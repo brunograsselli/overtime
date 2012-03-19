@@ -7,7 +7,7 @@ var CalculatorController = function(calculator) {
   };
 
   var setTimer = function(e, message) {
-    var time = e.val().split(":");
+    var time = e.html().split(":");
     var future = new Date();
     future.setHours(time[0]);
     future.setMinutes(time[1]);
