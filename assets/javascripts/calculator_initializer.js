@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#arrived_at").val(window.localStorage.time);
-  var baseTime = window.localStorage.baseTime || "9:48";
+  var baseTime = window.localStorage.baseTime || "09:48";
   $("#base_time").html(baseTime);
   var calculator = new Calculator();
   calculator.setBaseTime(baseTime);
