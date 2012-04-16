@@ -3,6 +3,8 @@ describe("CalculatorController", function () {
 
   beforeEach(function () {
     fakeCalculator = {
+      setBaseTime: function(value){
+      },
       minTime: function (time) {
         if (time == "10:30") {
           return "20:30";
@@ -27,6 +29,7 @@ describe("CalculatorController", function () {
     $("form").append("<div id='min_time' />");
     $("form").append("<div id='regular_time' />");
     $("form").append("<div id='max_time' />");
+    $("form").append("<p>Horário base: <span id='base_time'></span> <a href='#' id='edit_base_time'>Alterar</a></p>");
 
     var calculatorController = new CalculatorController(fakeCalculator);
     $("#arrived_at").val("10:30");
@@ -73,9 +76,52 @@ describe("CalculatorController", function () {
     });
 
     it("should store the time", function () {
-      delete window.localStorage.overtime;
+      delete window.localStorage.time;
       $("#calc_button").click();
       expect(window.localStorage.time).toEqual("10:30");
+    });
+  });
+
+  describe("when user clicks on edit", function () {
+    describe("when link is Editar", function () {
+      beforeEach(function () {
+        $("#edit_base_time").html("Alterar");
+      });
+
+      it("should change the base time html by an input", function () {
+        window.localStorage.baseTime = "9:00";
+        $("#edit_base_time").click();
+        expect($("#base_time input").val()).toEqual("9:00");
+      });
+
+      it("should change the edit link by an ok link", function () {
+        $("#edit_base_time").click();
+        expect($("#edit_base_time").html()).toEqual("Ok");
+      });
+    });
+
+    describe("when link is Ok", function () {
+      beforeEach(function () {
+        $("#edit_base_time").html("Ok");
+        $("#base_time").html("<input type='text' value='13:00' id='base_time_input' />");
+      });
+
+      it("should change the input by the base time", function () {
+        window.localStorage.baseTime = "9:00";
+        $("#edit_base_time").click();
+        expect($("#base_time").html()).toEqual("13:00");
+      });
+
+      it("should change the ok link by an edit link", function () {
+        $("#edit_base_time").click();
+        expect($("#edit_base_time").html()).toEqual("Alterar");
+      });
+
+      it("should update the base time", function () {
+        spyOn(fakeCalculator, 'setBaseTime')
+        $("#edit_base_time").click();
+        expect(fakeCalculator.setBaseTime).toHaveBeenCalledWith("13:00");
+      });
     });
   });
 });

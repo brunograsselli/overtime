@@ -10,3 +10,8 @@ body {
   width: auto;
   padding: 6px 8px 0 14px;
 }
+
+.container-fluid p {
+  padding: 6px 8px 0 14px;
+  margin-bottom: 0px;
+}
