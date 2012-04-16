@@ -1,4 +1,6 @@
 var Calculator = function() {
+  var baseTime;
+
   var timeAsString = function(time) {
     return twoDigits(time.getHours()) + ":" + twoDigits(time.getMinutes());
   };
@@ -8,27 +10,37 @@ var Calculator = function() {
     return collection[collection.length - 2] + collection[collection.length - 1];
   }
 
-  var convertTime = function(arrivedAt, period) {
+  var calcTime = function(arrivedAt, period) {
     var collection = arrivedAt.split(/[^0-9]/);
     var hours = collection[0];
     var minutes = collection[1];
-
     var dateTime = new Date(2011, 01, 01, hours, minutes);
-    var result = new Date(dateTime.getTime() + period); 
+    var result = new Date(dateTime.getTime() + period);
     return timeAsString(result);
   };
 
   return {
+    setBaseTime: function(time){
+      window.localStorage.baseTime = time;
+      var collection = time.split(/[^0-9]/);
+      var hours = parseInt(collection[0], 10);
+      var minutes = parseInt(collection[1], 10);
+      baseTime = ((hours * 60 + minutes) * 60 * 1000);
+    },
+
     minTime: function(arrivedAt) {
-      return convertTime(arrivedAt, ((9 * 60 + 33) * 60 * 1000));
+      var period = (baseTime - (15 * 60 * 1000));
+      var dateTime = new Date(period);
+      return calcTime(arrivedAt, period);
     },
 
     regularTime: function(arrivedAt) {
-      return convertTime(arrivedAt, ((9 * 60 + 48) * 60 * 1000));
+      return calcTime(arrivedAt, baseTime);
     },
 
     maxTime: function(arrivedAt) {
-      return convertTime(arrivedAt, ((9 * 60 + 63) * 60 * 1000));
+      var period = (baseTime + (15 * 60 * 1000));
+      return calcTime(arrivedAt, period);
     }
   };
 }

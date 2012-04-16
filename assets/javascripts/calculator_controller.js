@@ -6,6 +6,22 @@ var CalculatorController = function(calculator) {
     });
   };
 
+  var bindEditBaseTimeLink = function() {
+    $("#edit_base_time").click(function(event) {
+      event.preventDefault();
+
+      if ($(this).html() == "Alterar") {
+        $("#base_time").html("<input type='time' value='" + window.localStorage.baseTime + "' id='base_time_input' class='mini' />");
+        $("#edit_base_time").html("Ok");
+      } else {
+        var baseTime = $("#base_time_input").val();
+        calculator.setBaseTime(baseTime);
+        $("#base_time").html(baseTime);
+        $("#edit_base_time").html("Alterar");
+      }
+    });
+  };
+
   var calcTimeToLeave = function() {
     var arrivedAt = $("#arrived_at").val();
     window.localStorage.time = arrivedAt;
@@ -20,4 +36,5 @@ var CalculatorController = function(calculator) {
   }
 
   bindCalcButton();
+  bindEditBaseTimeLink();
 }
