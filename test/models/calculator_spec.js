@@ -15,7 +15,7 @@ describe("Calculator", function () {
 
   describe("when base time is 9:48", function () {
     beforeEach(function () {
-      calculator.setBaseTime("9:48");
+      calculator.setBaseTime("09:48");
     });
 
     describe("#minTime", function () {
@@ -51,7 +51,7 @@ describe("Calculator", function () {
 
   describe("when base time is 9:00", function () {
     beforeEach(function () {
-      calculator.setBaseTime("9:00");
+      calculator.setBaseTime("09:00");
     });
 
     describe("#minTime", function () {

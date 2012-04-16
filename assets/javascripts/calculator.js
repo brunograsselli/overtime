@@ -23,13 +23,14 @@ var Calculator = function() {
     setBaseTime: function(time){
       window.localStorage.baseTime = time;
       var collection = time.split(/[^0-9]/);
-      var hours = parseInt(collection[0]);
-      var minutes = parseInt(collection[1]);
+      var hours = parseInt(collection[0], 10);
+      var minutes = parseInt(collection[1], 10);
       baseTime = ((hours * 60 + minutes) * 60 * 1000);
     },
 
     minTime: function(arrivedAt) {
       var period = (baseTime - (15 * 60 * 1000));
+      var dateTime = new Date(period);
       return calcTime(arrivedAt, period);
     },
 
