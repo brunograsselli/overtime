@@ -11,7 +11,7 @@ var CalculatorController = function(calculator) {
       event.preventDefault();
 
       if ($(this).html() == "Alterar") {
-        $("#base_time").html("<input type='text' value='" + window.localStorage.baseTime + "' id='base_time_input' class='mini' />");
+        $("#base_time").html("<input type='time' value='" + window.localStorage.baseTime + "' id='base_time_input' class='mini' />");
         $("#edit_base_time").html("Ok");
       } else {
         var baseTime = $("#base_time_input").val();
