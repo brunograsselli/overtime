@@ -15,3 +15,6 @@ body {
   padding: 6px 8px 0 14px;
   margin-bottom: 0px;
 }
+.container-fluid input[type='time'] {
+  width: 95px;
+}
